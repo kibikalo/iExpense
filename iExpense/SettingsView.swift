@@ -10,7 +10,7 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
             .toolbar {
-                ToolbarItem (placement: .bottomBar) {
+                ToolbarItem (placement: .navigation) {
                     Button("Back") {
                         dismiss()
                     }

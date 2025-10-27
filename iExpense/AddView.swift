@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AddView: View {
-    @State private var name = ""
+    @State private var name = "Title"
     @State private var type: ExpenseType = .expense
     @State private var amount = 0.0
     @State private var description = ""
@@ -19,14 +19,14 @@ struct AddView: View {
                         }
                     }
                     .pickerStyle(.segmented)
-                    
-                    TextField("Name", text: $name)
+                
                     TextField("Description", text: $description)
                     TextField("Amount", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         .keyboardType(.decimalPad)
                 }
             }
-            .navigationTitle("New Expense")
+            .navigationTitle($name)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem (placement: .cancellationAction) {
                     Button("Cancel", role: .cancel) {
@@ -44,6 +44,7 @@ struct AddView: View {
                     .buttonStyle(.borderedProminent)
                 }
             }
+            .navigationBarBackButtonHidden()
         }
     }
 }
